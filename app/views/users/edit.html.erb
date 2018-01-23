@@ -1,5 +1,5 @@
-<%= provide(:title,"Sign up") %>
-<h1>Create a new account</h1>
+<%= provide(:title,"Edit account") %>
+<h1>Edit account</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
@@ -18,7 +18,7 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, class: 'form_control' %>
         
-        <%= f.submit "Create Account", class: 'btn btn-primary' %>
+        <%= f.submit "Update Account", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
