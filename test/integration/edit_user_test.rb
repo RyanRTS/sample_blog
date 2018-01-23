@@ -3,6 +3,7 @@ require 'test_helper'
 class EditUserTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:ryan)
+    @other = users(:archer)
   end
   
   test "unsuccessful edit" do
@@ -33,6 +34,13 @@ class EditUserTest < ActionDispatch::IntegrationTest
   test "should redirect to login page when not logged in" do
     get edit_user_path(@user)
     assert_redirected_to login_path
+  end
+  
+  test "user can only edit their own profile" do
+    log_in_as(@user)
+    get edit_user_path(@other)
+    assert_redirected_to root_url
+    assert_not flash.empty?
   end
   
 end

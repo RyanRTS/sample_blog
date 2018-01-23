@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:info] = "You can only edit your profile"
+      redirect_to root_url
+    end
   end
   
   def update
