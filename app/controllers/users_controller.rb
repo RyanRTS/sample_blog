@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
   
   def edit
@@ -44,11 +45,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, 
                                 :password, :password_confirmation)
-  end
-  
-  def logged_in_user
-    redirect_to login_path unless logged_in?
-      
   end
   
 end

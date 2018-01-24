@@ -1,0 +1,11 @@
+<% provide(:title, 'Post') %>
+<h3><%= @post.title %></h3>
+<span class="user"><%= link_to @post.user.name, @post.user %></span>
+<br><br>
+<span class="content">
+  <%= @post.content %>
+</span>
+<br>
+<span class="timestamp">
+  <%= link_to "edit", edit_post_path %>
+</span>
