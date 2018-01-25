@@ -1,6 +1,7 @@
 <li>
-  <%= link_to category.name, category %> | 
-  Post(s) <%= category.posts.count %> 
-  <%= link_to " | delete", category, method: :delete, data: { confirm: "You sure?" } if @user == category.user || @user.admin?%>
+  <span class="title"><%= link_to category.name, category %></span>
+  <span class="title">Post(s) <%= category.posts.count %> </span>
+  <span class="timestamp">
+    <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } if @user == category.user || @user.admin?%>
+  </span>
 </li>
-<br>

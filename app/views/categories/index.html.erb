@@ -3,10 +3,12 @@
 <div class="row">
   <div class="center">
     <%= link_to "New category", new_category_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-category', 'class' => 'btn btn-primary' } %>
-    <br>
-    <ul class="users">
-        <%= render @categories %>
-    </ul>
+    <br><br>
+      <div class="col-md-12">
+        <ol class="microposts">
+            <%= render @categories %>
+        </ol>
+      </div>
     <div id="modal-category" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   </div>
 </div>
