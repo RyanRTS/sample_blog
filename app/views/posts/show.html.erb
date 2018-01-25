@@ -6,6 +6,9 @@
   <%= @post.content %>
 </span>
 <br>
+<% if current_user == @post.user || current_user.admin? %>
 <span class="timestamp">
   <%= link_to "edit", edit_post_path %>
+  <%= link_to " | delete", @post, method: :delete, data: { confirm: "You sure?" }%>
 </span>
+<% end %>

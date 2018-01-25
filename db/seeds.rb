@@ -25,7 +25,7 @@ Category.create!(name: "Misc", user: User.first)
 
 9.times do 
   user = User.find(Faker::Number.between(1,3))
-  name = Faker::Hipster.word
+  name = Faker::Hipster.words(2)
   Category.create!(name: name, user: user)
 end
 

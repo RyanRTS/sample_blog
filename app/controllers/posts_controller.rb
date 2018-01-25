@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @user = @post.user
-    unless @user == current_user
+    unless @user == current_user || current_user.admin?
       flash[:warning] = "You can only edit your own posts"
       redirect_to @post
     end
@@ -36,6 +36,17 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    if current_user == @post.user || current_user.admin?
+      @post.destroy
+      flash[:success] = "Post deleted"
+    else
+      flash[:danger] = "Cannot delete other user's post"
+    end
+    redirect_to root_url
   end
   
   

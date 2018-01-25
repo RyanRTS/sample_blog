@@ -14,6 +14,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
+    log_in_as users(:ryan)
     get post_path @post
     assert_response :success
   end

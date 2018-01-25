@@ -3,7 +3,9 @@ require 'test_helper'
 class CreatePostTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:ryan)
+    @other_user = users(:archer)
     @post = posts(:post_1)
+    @archer_post = posts(:archer_post)
     @category = categories(:first)
   end
   
@@ -31,6 +33,20 @@ class CreatePostTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     follow_redirect!
     assert_not flash.empty?
+  end
+  
+  test "unauthorized user should not delete post" do
+    log_in_as @other_user
+    assert_no_difference 'Post.count' do
+      delete post_path @post
+    end
+  end
+  
+  test "admin user can delete other user's posts" do
+    log_in_as @user
+    assert_difference 'Post.count', -1 do
+      delete post_path @archer_post
+    end
   end
   
 end
