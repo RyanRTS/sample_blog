@@ -3,7 +3,8 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
   def setup
     @user = users(:ryan)
-    @post = @user.posts.build(title: 'Lorem', content: "Lorem ipsum")
+    @category = categories(:first)
+    @post = @user.posts.build(title: 'Lorem', content: "Lorem ipsum", category: @category)
   end
   
   test "should be valid" do
@@ -24,5 +25,9 @@ class PostTest < ActiveSupport::TestCase
     @post.title = "  "
     assert_not @post.valid?
   end
-  
+
+  test "category should be present" do
+    @post.category = nil
+    assert_not @post.valid?
+  end  
 end

@@ -1,6 +1,6 @@
 <li id="post-<%= post.id %>">
-  <span class="content"><%= link_to post.title, post %></span>
-  <span class="pull-right"><%= link_to "category", '#' %></span>
+  <span class="title"><%= link_to post.title, post, class: 'text-primary h5' %></span>
+  <span class="pull-right"><%= link_to post.category.name, post.category, class: 'text-info' %></span>
   <span class="content">
     <%= post.content %>
   </span>

@@ -7,10 +7,10 @@
     <%= render 'shared/error_messages', object: f.object %>
         <%= hidden_field_tag :id, @post.id %>
         <%= f.label :title %>
-        <%= f.text_field :title, class: 'form_control' %>
+        <%= f.text_field :title, class: 'form-control' %>
       
         <%= f.label :content %>
-        <%= f.text_area :content, class: 'form_control' %>
+        <%= f.text_area :content, class: 'form-control' %>
         
         <%= f.submit "Update Post", class: 'btn btn-primary' %>
     <% end %>

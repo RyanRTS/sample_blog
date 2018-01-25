@@ -4,6 +4,7 @@ ryan:
   name: Ryan Example
   email: rmahoney@vt.edu
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 archer:
   name: Sterling Archer

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many      :posts, dependent: :destroy
+  has_many      :categories, dependent: :destroy
   before_save   :downcase_email
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

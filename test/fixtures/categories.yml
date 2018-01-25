@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first:
+  name: "first category"
+  user: ryan
+
+second:
+  name: "second category"
+  user: archer

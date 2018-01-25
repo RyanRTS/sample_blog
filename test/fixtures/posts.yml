@@ -6,6 +6,7 @@ post_<%= n %>:
   created_at: <%= Time.zone.now %>
   user: ryan
   title: <%= Faker::Lorem.sentence(3) %>
+  category: first
 <% end %>
 
 archer_post:
@@ -13,3 +14,4 @@ archer_post:
   created_at: <%= Time.zone.now %>
   user: archer
   title: <%= Faker::Lorem.sentence(3) %>
+  category: second

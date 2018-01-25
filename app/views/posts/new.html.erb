@@ -7,10 +7,13 @@
     <%= render 'shared/error_messages', object: f.object %>
         
         <%= f.label :title %>
-        <%= f.text_field :title, class: 'form_control' %>
+        <%= f.text_field :title, class: 'form-control' %>
       
         <%= f.label :content %>
-        <%= f.text_area :content, class: 'form_control' %>
+        <%= f.text_area :content, class: 'form-control' %>
+        
+        <%= f.label :category_id %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {:class=>'form-control'}) %>
         
         <%= f.submit "Create Post", class: 'btn btn-primary' %>
     <% end %>
