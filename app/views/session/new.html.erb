@@ -10,8 +10,8 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
       
-      
       <%= f.submit "Login", class: 'btn btn-primary' %>
     <% end %>
+    <p>Not registered? <%= link_to "Create an account", new_user_path %></p>
   </div>
 </div>
