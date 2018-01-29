@@ -1,0 +1,6 @@
+<%= form_for(current_user.subscriptions.where("category_id = ?", @category.id).first,
+            html: { method: :delete }, remote: true) do |f| %>
+  <div class="col-xs-2">          
+    <%= f.submit "unsubscribe", class: 'btn btn-danger' %>
+  </div>
+<% end %>

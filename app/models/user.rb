@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many      :posts, dependent: :destroy
-  has_many      :categories, dependent: :destroy
+  has_many      :posts,         dependent: :destroy
+  has_many      :categories,    dependent: :destroy
+  has_many      :subscriptions, dependent: :destroy
   before_save   :downcase_email
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -45,7 +46,22 @@ class User < ApplicationRecord
   end
   
   def feed
-    Post.where("user_id = ?", id)
+    subscribed_category_ids = "SELECT category_id FROM subscriptions
+                               WHERE user_id = :user_id"
+    Post.where("user_id = :user_id OR category_id IN (#{subscribed_category_ids})", user_id: id)
+  end
+  
+  def subscribe(category)
+    subscription = subscriptions.create(category: category)
+    subscriptions << subscription
+  end
+  
+  def unsubscribe(subscription)
+    subscriptions.delete(subscription)
+  end
+  
+  def subscribed?(category)
+    subscriptions.include?(Subscription.where("category_id = ? AND user_id = ?", category.id, id).first)
   end
   
   

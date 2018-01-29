@@ -1,0 +1,10 @@
+<div class="row">
+  <div id="subscription_form">
+   
+    <% if current_user.subscribed?(@category) %>
+      <%= render 'unsubscribe' %>
+    <% else %>
+      <%= render 'subscribe' %>
+    <% end %>
+  </div>
+</div><br>

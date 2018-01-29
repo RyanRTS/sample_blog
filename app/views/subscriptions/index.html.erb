@@ -1,0 +1,14 @@
+<% provide(:title, "Subscriptions") %>
+<h1>Subscriptions</h1>
+<div class="row">
+  <% if @subscriptions.any? %>
+    <ol class="microposts">
+      <%= render @subscriptions %>
+    </ol>
+  <% else %>
+  <div class="col-md-12">
+    You have no subscriptions. Check out our channels <%= link_to "here", categories_path %>
+  </div>
+  <% end %>
+  <div id="modal-category" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+</div>

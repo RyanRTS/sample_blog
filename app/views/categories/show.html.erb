@@ -1,6 +1,9 @@
 <% provide(:title, @category.name) %>
 <h1><%= @category.name %></h1>
-<% if current_user == @category.user || current_user.admin? %>
+  <div class="col-md-12 col-md-offset-5">
+    <%= render 'subscription_form' if logged_in? %>
+  </div>
+<% if logged_in? && (current_user == @category.user || current_user.admin?) %>
   <div class="center">
     <%= link_to "Edit category", edit_category_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-category', 'class' => 'btn btn-primary' } %>
   </div>

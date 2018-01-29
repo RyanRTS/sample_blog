@@ -1,7 +1,10 @@
 <li>
-  <span class="title"><%= link_to category.name, category %></span>
+  <span class="title">
+    <%= link_to category.name, category %>  
+    <span class="label label-primary"><%= 'subscribed' if @user.subscribed?(category) %></span>
+  </span>
   <span class="title">Post(s) <%= category.posts.count %> </span>
   <span class="timestamp">
-    <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } if @user == category.user || @user.admin?%>
+    <%= link_to "delete", category, method: :delete, data: { confirm: "You sure?" } if logged_in? && (@user == category.user || @user.admin?) %>
   </span>
 </li>

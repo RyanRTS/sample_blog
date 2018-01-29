@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :categories
+  resources :subscriptions, only: [:create, :destroy, :index]
 
   root 'static_pages#home'
 end
